@@ -9,7 +9,7 @@ import 'package:jackbox_patcher/services/internal_api/rest_api_router.dart';
 import 'package:jackbox_patcher/services/logger/logger.dart';
 import 'package:jackbox_patcher/services/user/initial_load.dart';
 import 'package:logger/logger.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
+// import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'app_configuration.dart';
 
@@ -48,15 +48,16 @@ void main(List<String> arguments) async {
   if (kDebugMode) {
     runApp(FlavorBanner(color: Colors.orange, child: const MyApp()));
   } else {
-    await SentryFlutter.init(
-      (options) {
-        options.environment = "debug";
-        options.dsn =
-            'https://bc7660c906ba4f24ad2e37530bfa4c39@o518501.ingest.sentry.io/4504978536988672';
-      },
-      // Init your App.
-      appRunner: () =>
-          runApp(FlavorBanner(color: Colors.orange, child: const MyApp())),
-    );
+    runApp(FlavorBanner(color: Colors.orange, child: const MyApp()));
+    // await SentryFlutter.init(
+    //   (options) {
+    //     options.environment = "debug";
+    //     options.dsn =
+    //         'https://bc7660c906ba4f24ad2e37530bfa4c39@o518501.ingest.sentry.io/4504978536988672';
+    //   },
+    //   // Init your App.
+    //   appRunner: () =>
+    //       runApp(FlavorBanner(color: Colors.orange, child: const MyApp())),
+    // );
   }
 }

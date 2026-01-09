@@ -8,7 +8,7 @@ import 'package:jackbox_patcher/main.dart';
 import 'package:jackbox_patcher/services/arguments_handler/arguments_handler.dart';
 import 'package:jackbox_patcher/services/user/initial_load.dart';
 import 'package:logger/logger.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
+// import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'services/logger/logger.dart';
 
@@ -37,12 +37,13 @@ void main(List<String> arguments) async {
     exit(0);
   }
   initRetrievingErrors();
-  await SentryFlutter.init(
-    (options) {
-      options.environment = "production";
-      options.dsn = 'https://bc7660c906ba4f24ad2e37530bfa4c39@o518501.ingest.sentry.io/4504978536988672';
-    },
-    // Init your App.
-    appRunner: () => runApp(MyApp()),
-  );
+  runApp(MyApp());
+  // await SentryFlutter.init(
+  //   (options) {
+  //     options.environment = "production";
+  //     options.dsn = 'https://bc7660c906ba4f24ad2e37530bfa4c39@o518501.ingest.sentry.io/4504978536988672';
+  //   },
+  //   // Init your App.
+  //   appRunner: () => runApp(MyApp()),
+  // );
 }
